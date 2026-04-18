@@ -1,0 +1,10 @@
+import './react-shim.jsx';
+import './data.jsx';
+import './primitives.jsx';
+import './shell.jsx';
+import './dashboard.jsx';
+import './vagas.jsx';
+import './kanban.jsx';
+import './hunting.jsx';
+import './chat.jsx';
+import './app.jsx';

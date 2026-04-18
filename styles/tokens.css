@@ -1,0 +1,142 @@
+/* Banco de Oportunidades — color + type tokens
+   Source: Figma "UI System Desktop.fig" / Desktop page.
+   Load Poppins + Mulish from Google Fonts before this stylesheet. */
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ─── Brand ─────────────────────────────────────────── */
+  --brand-blue:        #0657F9;   /* primary */
+  --brand-blue-press:  #0044CB;   /* darker / pressed */
+  --brand-blue-24:     rgba(6,87,249,0.24);
+  --brand-blue-12:     rgba(6,87,249,0.12);
+  --brand-blue-56:     rgba(6,87,249,0.56); /* big decorative circles */
+  --brand-blue-04:     rgba(6,87,249,0.04);
+
+  /* ─── Audience accents ──────────────────────────────── */
+  --audience-estudante:    #0657F9;
+  --audience-engenheiro:   #40A27A;
+  --audience-empresa:      #F38354;
+  --audience-empresa-alt:  #FF854C;
+
+  /* ─── Decorative pops (sparse) ──────────────────────── */
+  --pop-neon-green:  #00FF10;
+  --pop-purple:      #8A38F5;
+  --pop-purple-12:   rgba(149,10,255,0.12);
+  --pop-red:         #FF0E00;
+
+  /* ─── Ink ───────────────────────────────────────────── */
+  --ink-1:        #050805;  /* primary heading / logo ink */
+  --ink-footer:   #15110D;  /* footer background */
+  --ink-ghost:    #242424;  /* "oportun" ghost word on footer */
+  --ink-2:        #3B3C39;  /* body on light */
+
+  /* ─── Neutrals ──────────────────────────────────────── */
+  --gray-meta:    #626B86;  /* cool gray, job meta */
+  --gray-mute:    #898B8D;  /* subtitle under H1 */
+  --gray-placeholder: #909090;
+  --gray-divider: #D9D9D9;
+  --gray-border:  #E5E5E5;  /* hairline */
+  --gray-surface: #EDEDED;
+
+  /* ─── Surfaces ──────────────────────────────────────── */
+  --surface-0:    #FFFFFF;
+  --surface-page: #F9FBFC;  /* canvas */
+  --surface-footer-text: rgba(255,255,255,0.64);
+
+  /* ─── Radii ─────────────────────────────────────────── */
+  --radius-xs:  4px;   /* inputs, small tiles */
+  --radius-sm:  8px;   /* cards, panels */
+  --radius-md: 16px;   /* big section wrappers */
+  --radius-pill: 100px;
+
+  /* ─── Shadows (only one in the system) ──────────────── */
+  --shadow-floating: 0 4px 24px rgba(0,0,0,0.25);
+
+  /* ─── Spacing ───────────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-nav-gap: 72px;  /* distinctive nav-link gap */
+
+  /* ─── Layout ────────────────────────────────────────── */
+  --page-width: 1920px;
+  --page-gutter: 100px;
+  --header-height: 100px;
+  --header-gutter: 48px;
+  --card-pad: 40px;
+
+  /* ─── Type families ─────────────────────────────────── */
+  --font-display:  'Poppins', system-ui, sans-serif;
+  --font-ui:       'Poppins', system-ui, sans-serif;
+  --font-body:     'Mulish', system-ui, sans-serif;
+
+  /* ─── Raw scale (px) ────────────────────────────────── */
+  --fs-hero:    64px;  /* hero H1 */
+  --fs-h1:      48px;  /* section headlines */
+  --fs-h2:      40px;  /* audience-card titles */
+  --fs-h3:      32px;  /* login wordmark / small section head */
+  --fs-h4:      24px;  /* logo text, minor headings */
+  --fs-lead:    20px;  /* subheads + audience descriptions */
+  --fs-md:      18px;  /* job title, footer group label */
+  --fs-body:    16px;  /* body, button labels, input text */
+  --fs-sm:      14px;  /* job meta, filter chips */
+  --fs-xs:      12px;
+
+  --fs-ghost:  550px;  /* footer "oportun" watermark */
+
+  /* ─── Line-heights ──────────────────────────────────── */
+  --lh-tight:   1;      /* eyebrows, nav, pill labels */
+  --lh-display: 1.2;    /* 48–64px display */
+  --lh-body:    1.5;    /* body + footer */
+
+  /* ─── Weights ───────────────────────────────────────── */
+  --w-regular: 400;
+  --w-medium:  500;
+  --w-semi:    600;
+  --w-bold:    700;
+}
+
+/* ─── Semantic role vars ──────────────────────────────── */
+:root {
+  --fg-1: var(--ink-1);
+  --fg-2: var(--ink-2);
+  --fg-mute: var(--gray-mute);
+  --fg-meta: var(--gray-meta);
+  --fg-on-dark: #FFFFFF;
+  --fg-on-dark-64: rgba(255,255,255,0.64);
+
+  --bg: var(--surface-page);
+  --bg-card: var(--surface-0);
+  --bg-footer: var(--ink-footer);
+
+  --border: var(--gray-border);
+  --border-input: var(--gray-border);
+}
+
+/* ─── Semantic element styles (opt-in via class) ─────── */
+.h-hero    { font-family: var(--font-display); font-weight: var(--w-bold);   font-size: var(--fs-hero); line-height: var(--lh-display); color: var(--fg-1); letter-spacing: -0.01em; }
+.h1        { font-family: var(--font-display); font-weight: var(--w-medium); font-size: var(--fs-h1);   line-height: var(--lh-display); color: var(--fg-1); }
+.h2        { font-family: var(--font-display); font-weight: var(--w-bold);   font-size: var(--fs-h2);   line-height: var(--lh-display); color: var(--fg-1); }
+.h3        { font-family: var(--font-display); font-weight: var(--w-bold);   font-size: var(--fs-h3);   line-height: var(--lh-body);    color: var(--fg-1); }
+.h4        { font-family: var(--font-display); font-weight: var(--w-bold);   font-size: var(--fs-h4);   line-height: var(--lh-body);    color: var(--fg-1); }
+.lead      { font-family: var(--font-ui); font-weight: var(--w-regular); font-size: var(--fs-lead); line-height: var(--lh-body); color: var(--fg-2); }
+.p         { font-family: var(--font-ui); font-weight: var(--w-regular); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--fg-2); }
+.p-body    { font-family: var(--font-body); font-weight: var(--w-regular); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--fg-1); } /* footer-style copy */
+.meta      { font-family: var(--font-ui); font-weight: var(--w-regular); font-size: var(--fs-sm); line-height: var(--lh-tight); color: var(--fg-meta); }
+.label     { font-family: var(--font-ui); font-weight: var(--w-regular); font-size: var(--fs-body); line-height: var(--lh-tight); color: var(--fg-1); }
+.eyebrow   { font-family: var(--font-ui); font-weight: var(--w-bold); font-size: var(--fs-lead); letter-spacing: 0.04em; line-height: var(--lh-tight); color: var(--brand-blue); text-transform: uppercase; }
+.button-lg { font-family: var(--font-ui); font-weight: var(--w-bold); font-size: var(--fs-lead); line-height: var(--lh-tight); }
+.button-md { font-family: var(--font-ui); font-weight: var(--w-bold); font-size: var(--fs-body); line-height: var(--lh-tight); }
+.nav-link  { font-family: var(--font-ui); font-weight: var(--w-medium); font-size: var(--fs-body); line-height: var(--lh-tight); color: var(--fg-1); }
+.footer-h  { font-family: var(--font-body); font-weight: var(--w-medium); font-size: var(--fs-md); line-height: var(--lh-body); color: var(--fg-on-dark); }
+
+/* ─── Reset-lite ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: var(--font-ui); color: var(--fg-1); background: var(--bg); -webkit-font-smoothing: antialiased; }
