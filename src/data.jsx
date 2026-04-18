@@ -156,13 +156,14 @@ window.MOCK_NOTIFS = [
 ];
 
 // ─────────── Funil agregado ───────────
+// `dropoffLabel` descreve quem não avançou desta etapa (opcional; abandono e % são calculados vs. próxima etapa).
 window.MOCK_FUNNEL = [
-  { label:'Visualizações', value:11950, delta:'+18%' },
-  { label:'Candidaturas', value:517, delta:'+12%' },
-  { label:'Triados', value:186, delta:'+6%' },
-  { label:'Em entrevista', value:62, delta:'+22%' },
-  { label:'Oferta', value:18, delta:'+4%' },
-  { label:'Contratados', value:9, delta:'+1' }
+  { label:'Visualizações', value:12800, delta:'+18%', dropoffLabel:'Sem candidatura' },
+  { label:'Candidaturas', value:5200, delta:'+12%', dropoffLabel:'Sem triagem' },
+  { label:'Triados', value:1980, delta:'+6%', dropoffLabel:'Sem entrevista' },
+  { label:'Em entrevista', value:650, delta:'+22%', dropoffLabel:'Sem oferta' },
+  { label:'Oferta', value:220, delta:'+4%', dropoffLabel:'Recusaram / saíram' },
+  { label:'Contratados', value:88, delta:'+1' }
 ];
 
 // ─────────── Heatmap (atividade por dia/hora) ───────────

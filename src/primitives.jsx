@@ -3,7 +3,7 @@ const { useState, useEffect, useRef } = React;
 
 // ─────────── Colors & tokens (re-used in JS) ───────────
 window.T = {
-  blue:'#0657F9', bluePress:'#0044CB', blue04:'rgba(6,87,249,0.04)', blue12:'rgba(6,87,249,0.12)', blue24:'rgba(6,87,249,0.24)',
+  blue:'#0657F9', bluePress:'#0044CB', blue04:'rgba(6,87,249,0.04)', blue12:'rgba(6,87,249,0.12)', blue16:'#D7E4FE', blue24:'rgba(6,87,249,0.24)',
   green:'#40A27A', orange:'#F38354', purple:'#8A38F5', neon:'#00FF10', red:'#FF0E00',
   ink:'#050805', ink2:'#3B3C39', meta:'#626B86', mute:'#898B8D', placeholder:'#909090',
   divider:'#D9D9D9', border:'#E5E5E5', surface:'#EDEDED', page:'#F9FBFC', card:'#FFFFFF',
@@ -65,6 +65,7 @@ window.Icon = ({ name, size=18, stroke=1.75, color='currentColor' }) => {
     chevRight: <><path d="M9 6l6 6-6 6"/></>,
     chevDown: <><path d="M6 9l6 6 6-6"/></>,
     trend: <><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></>,
+    trendDown: <><path d="M3 7l6 6 4-4 8 8"/><path d="M14 17h7v-7"/></>,
     file: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></>,
     drag: <><circle cx="9" cy="5" r="1.3"/><circle cx="15" cy="5" r="1.3"/><circle cx="9" cy="12" r="1.3"/><circle cx="15" cy="12" r="1.3"/><circle cx="9" cy="19" r="1.3"/><circle cx="15" cy="19" r="1.3"/></>,
     flame:<><path d="M12 2c3 4 5 7 5 11a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3 0-6 1-10z"/></>,

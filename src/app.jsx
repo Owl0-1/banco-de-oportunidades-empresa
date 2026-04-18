@@ -94,6 +94,9 @@ function App() {
   };
 
   const onNav = (key, payload) => {
+    if (key === 'configuracoes' || key === 'sair') {
+      return;
+    }
     if (key === 'vagas-new') {
       setEditingVaga(null);
       setShowNovaVaga(true);
