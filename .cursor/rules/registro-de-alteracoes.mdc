@@ -1,0 +1,47 @@
+---
+description: Sempre registrar alterações no ALTERACOES.md (antes de finalizar a tarefa)
+alwaysApply: true
+---
+
+# Registro de alterações (obrigatório)
+
+Este projeto mantém um registro manual de mudanças em `ALTERACOES.md`. **Toda e qualquer modificação realizada no sistema deve ser refletida nesse arquivo antes de encerrar a tarefa.**
+
+## Quando registrar
+
+Atualize `ALTERACOES.md` sempre que houver:
+- Mudança de UI/UX (layout, tamanhos, cores, espaçamento, componentes, estados, responsividade)
+- Mudança de comportamento (fluxos, regras de negócio, validações, navegação, estados)
+- Mudança de dependências/config (ex.: `package.json`, build, scripts)
+- Refactors relevantes que alterem leitura/manutenção (mesmo sem mudar o output)
+
+## Como registrar (padrão mínimo)
+
+- Use data no formato `YYYY-MM-DD`
+- No cabeçalho da entrada, liste **todos** os arquivos tocados (caminho relativo)
+- Para cada mudança, descreva **antes × depois** com números/valores quando fizer sentido
+- Se incluir snippet, **sempre** coloque a linha `Arquivo:` com o caminho relativo imediatamente antes do bloco de código
+
+### Template (copiar e preencher)
+
+```
+## YYYY-MM-DD — <título curto da mudança>
+
+**Arquivos afetados:** `caminho/relativo.ext`, `outro/arquivo.ext`
+
+### 1. <submudança>
+
+**Antes:** <o que era>
+**Depois:** <o que ficou>
+
+**Arquivo:** `caminho/relativo.ext`
+```<linguagem>
+<trecho relevante>
+```
+```
+
+## Checklist de saída (antes de concluir)
+
+- [ ] `ALTERACOES.md` atualizado com a mudança desta tarefa
+- [ ] Entrada tem data, título e lista completa de arquivos afetados
+- [ ] Todo snippet tem `Arquivo:` imediatamente antes do bloco

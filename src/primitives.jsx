@@ -21,9 +21,28 @@ window.Btn = ({ variant='primary', size='md', children, icon, onClick, disabled,
     ghost: { background:'transparent', color: T.ink, fontWeight:500 },
     danger: { background:'#fff', color: T.red, border:`1px solid ${T.border}`, fontWeight:500 }
   };
+  const hoverStyles = {
+    primary: { background: T.bluePress },
+    secondary: { background: T.page, borderColor: T.divider },
+    danger: { background: T.page, borderColor: T.divider },
+    ghost: { background: T.blue04 }
+  };
+  const baseBg = variants[variant]?.background;
+  const baseBorder = variants[variant]?.border;
+  const baseBorderColor = baseBorder && String(baseBorder).includes('solid') ? baseBorder.split(' ').slice(-1)[0] : undefined;
   return <button title={title} disabled={disabled} onClick={onClick} style={{...base, ...sizes[size], ...variants[variant], opacity:disabled?0.5:1, ...style}}
-    onMouseEnter={e=>{ if (!disabled && variant==='primary') e.currentTarget.style.background = T.bluePress; }}
-    onMouseLeave={e=>{ if (!disabled && variant==='primary') e.currentTarget.style.background = T.blue; }}>
+    onMouseEnter={e=>{
+      if (disabled) return;
+      const hs = hoverStyles[variant];
+      if (!hs) return;
+      if (hs.background != null) e.currentTarget.style.background = hs.background;
+      if (hs.borderColor != null && baseBorderColor != null) e.currentTarget.style.borderColor = hs.borderColor;
+    }}
+    onMouseLeave={e=>{
+      if (disabled) return;
+      if (baseBg != null) e.currentTarget.style.background = baseBg;
+      if (baseBorderColor != null) e.currentTarget.style.borderColor = baseBorderColor;
+    }}>
     {children}{icon && <span style={{display:'inline-flex'}}>{icon}</span>}
   </button>;
 };
@@ -48,6 +67,7 @@ window.Icon = ({ name, size=18, stroke=1.75, color='currentColor' }) => {
     x: <><path d="M6 6l12 12M6 18L18 6"/></>,
     eye: <><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></>,
     filter: <><path d="M3 4h18l-7 9v6l-4 2v-8z"/></>,
+    filterX: <><path d="M13.013 3H2l8 9.46V19l4 2v-8.54l.9-1.055M22 3l-5 5m0-5l5 5"/></>,
     dots: <><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></>,
     star: <><path d="M12 3l2.9 6 6.6.6-5 4.6 1.5 6.5L12 17.3 5.9 20.7 7.4 14.2l-5-4.6 6.6-.6z"/></>,
     spark: <><path d="M12 3v6M12 15v6M3 12h6M15 12h6M6.3 6.3l4.2 4.2M13.5 13.5l4.2 4.2M6.3 17.7l4.2-4.2M13.5 10.5l4.2-4.2"/></>,
@@ -56,6 +76,25 @@ window.Icon = ({ name, size=18, stroke=1.75, color='currentColor' }) => {
     clock: <><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>,
     mail: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></>,
     send: <><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></>,
+    clean: (
+      <>
+        <path d="M3 14h11" />
+        <path d="M12 14l7 7" />
+        <path d="M14 12l2-2" />
+        <path d="M16 14l2-2" />
+        <path d="M18 16l2-2" />
+        <path d="M7 14V6a2 2 0 0 1 2-2h2" />
+        <path d="M11 4l6 6" />
+      </>
+    ),
+    brushCleaning: (
+      <>
+        <path d="m16 22-1-4" />
+        <path d="M19 14a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2h-3a1 1 0 0 1-1-1V4a2 2 0 0 0-4 0v5a1 1 0 0 1-1 1H6a2 2 0 0 0-2 2v1a1 1 0 0 0 1 1" />
+        <path d="M19 14H5l-1.973 6.767A1 1 0 0 0 4 22h16a1 1 0 0 0 .973-1.233z" />
+        <path d="m8 22 1-4" />
+      </>
+    ),
     trash: <><path d="M4 7h16M10 11v6M14 11v6M5 7l1 14h12l1-14M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></>,
     pause: <><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></>,
     play: <><path d="M6 4v16l14-8z"/></>,
@@ -71,7 +110,12 @@ window.Icon = ({ name, size=18, stroke=1.75, color='currentColor' }) => {
     flame:<><path d="M12 2c3 4 5 7 5 11a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3 0-6 1-10z"/></>,
     image: <><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 18 5-5 4 4 3-3 6 6"/></>,
     bookmark:<><path d="M6 3h12v18l-6-4-6 4z"/></>,
-    external:<><path d="M14 3h7v7M10 14 21 3M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6"/></>
+    external: (
+      <>
+        <path d="M14 3h7v7M10 14 21 3" />
+        <path d="M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6" />
+      </>
+    )
   };
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>{map[name]}</svg>;
 };

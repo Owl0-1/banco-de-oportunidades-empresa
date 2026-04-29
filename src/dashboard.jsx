@@ -486,8 +486,8 @@ window.DashboardPage = ({ user, vagas, onGo, layout='balanced' }) => {
           </h1>
         </div>
         <div style={{display:'flex', gap:10}}>
-          <Btn variant="secondary" icon={<Icon name="users" size={14}/>} onClick={()=>onGo('hunting')} style={{fontSize:12, fontWeight:500}}>Buscar talentos</Btn>
-          <Btn variant="primary" icon={<Icon name="plus" size={14}/>} onClick={()=>onGo('vagas-new')} style={{fontSize:12, fontWeight:500}}>Nova vaga</Btn>
+          <Btn variant="secondary" size="md" icon={<Icon name="users" size={14}/>} onClick={()=>onGo('hunting')} style={{fontSize:12, fontWeight:500, padding:'11px 18px'}}>Buscar talentos</Btn>
+          <Btn variant="primary" size="md" icon={<Icon name="plus" size={14}/>} onClick={()=>onGo('vagas-new')} style={{fontSize:12, fontWeight:500, padding:'11px 18px'}}>Nova vaga</Btn>
         </div>
       </div>
 
@@ -654,7 +654,7 @@ window.DashboardPage = ({ user, vagas, onGo, layout='balanced' }) => {
                   boxSizing: 'border-box',
                   padding: 18,
                   background: T.card,
-                  borderRadius: 10,
+                  borderRadius: 14,
                   cursor: 'pointer',
                   border: `1px solid ${T.border}`,
                   boxShadow: '0 1px 2px rgba(5, 8, 5, 0.05)',

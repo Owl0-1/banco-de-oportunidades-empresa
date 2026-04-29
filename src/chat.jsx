@@ -2,6 +2,36 @@
 const { useState: useStateC, useEffect: useEffectC, useRef: useRefC } = React;
 
 // ─────────── Chat — subcomponentes ───────────
+const NotifsTabPill = ({ label, active, onClick }) => {
+  const [hot, setHot] = useStateC(false);
+  const bg = active ? T.ink : (hot ? T.page : 'transparent');
+  const fg = active ? '#fff' : T.ink;
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{
+        padding:'8px 16px',
+        borderRadius:100,
+        border:0,
+        background: bg,
+        color: fg,
+        fontFamily:'Poppins',
+        fontSize:13,
+        fontWeight: active?700:500,
+        cursor:'pointer',
+        transition:'background 140ms ease, color 140ms ease'
+      }}
+      onMouseEnter={() => setHot(true)}
+      onMouseLeave={() => setHot(false)}
+      onFocus={() => setHot(true)}
+      onBlur={() => setHot(false)}
+    >
+      {label}
+    </button>
+  );
+};
+
 const ChatSidebarHeader = ({ unreadCount, q, onQ }) => (
   <div style={{padding:'18px 20px', borderBottom:`1px solid ${T.border}`}}>
     <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:12}}>
@@ -142,7 +172,7 @@ const NotifsPageHeader = () => (
 const NotifsTabBar = ({ tab, onTab }) => (
   <div style={{display:'flex', gap:6, background:'#fff', border:`1px solid ${T.border}`, borderRadius:100, padding:4, marginBottom:16, width:'fit-content'}}>
     {NOTIF_TABS.map(t => (
-      <button key={t} type="button" onClick={()=>onTab(t)} style={{padding:'8px 16px', borderRadius:100, border:0, background: tab===t?T.ink:'transparent', color: tab===t?'#fff':T.ink, fontFamily:'Poppins', fontSize:13, fontWeight: tab===t?700:500, cursor:'pointer'}}>{t}</button>
+      <NotifsTabPill key={t} label={t} active={tab===t} onClick={()=>onTab(t)}/>
     ))}
   </div>
 );
